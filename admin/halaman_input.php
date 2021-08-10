@@ -7,7 +7,7 @@ $isi        = "";
 $error      = "";
 $sukses     = "";
 
-if (isset($_POST['submit'])) {
+if (isset($_POST['simpan'])) {
     $judul      = $_POST['judul'];
     $isi        = $_POST['isi'];
     $kutipan    = $_POST['kutipan'];
@@ -17,7 +17,7 @@ if (isset($_POST['submit'])) {
     }
 
     if (empty($error)) {
-        $sql1       = "insert into halaman(judul, kutipan, isi) values($judul. $kutipan, $isi)";
+        $sql1       = "insert into halaman(judul, kutipan, isi) values ('$judul', '$kutipan','$isi')";
         $q1         = mysqli_query($koneksi, $sql1);
 
         if ($q1) {
@@ -43,6 +43,7 @@ if ($error) {
 <?php
 }
 ?>
+
 <?php
 if ($sukses) {
 ?>
@@ -63,13 +64,13 @@ if ($sukses) {
     <div class="mb-3 row">
         <label for="kutipan" class="col-sm-2 col-form-label">Kutipan</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="kutipan" value="<?php echo $kutipan ?>" name="" kutipan>
+            <input type="text" class="form-control" id="kutipan" value="<?php echo $kutipan ?>" name="kutipan">
         </div>
     </div>
     <div class="mb-3 row">
         <label for="isi" class="col-sm-2 col-form-label">Isi</label>
         <div class="col-sm-10">
-            <textarea name="isi" id="isi" class="form-control"><?php echo $isi ?></textarea>
+            <textarea name="isi" id="summernote" class="form-control"><?php echo $isi ?></textarea>
         </div>
     </div>
     <div class="mb-3 row">
